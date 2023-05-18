@@ -1,10 +1,10 @@
 {
-  "name": "react-native-template",
+  "name": "react-native-starter",
   "version": "0.0.1",
   "description": "A starting point for React Native apps",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rorazliev/react-native-template"
+    "url": "https://github.com/rorazliev/react-native-starter"
   },
   "author": {
     "name": "Ruslan Orazliev",
