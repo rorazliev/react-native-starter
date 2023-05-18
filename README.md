@@ -21,7 +21,7 @@ A starting point for React Native apps.
 Use the following command to create a new React Native app:
 
 ```sh
-npx react-native init SomeApp --template https://github.com/rorazliev/react-native-template.git
+npx react-native init SomeApp --template https://github.com/rorazliev/react-native-starter.git
 ```
 
 `cd` to the project folder and install all dependencies using the following command:
