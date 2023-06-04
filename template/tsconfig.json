@@ -5,14 +5,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@identity/*": ["./src/identity/*"],
-      "@mocks/*": ["./src/mocks/*"],
-      "@navigation/*": ["./src/navigation/*"],
-      "@redux/*": ["./src/redux/*"],
-      "@screens/*": ["./src/screens/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@app/*": ["./src/*"],
     },
     "types": [
       "react-native",

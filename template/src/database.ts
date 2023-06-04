@@ -4,7 +4,7 @@ enablePromise(true);
 
 export const connect = async () => {
   globalThis.database = await openDatabase({
-    name: 'com.rorazliev.dengi.app',
+    name: 'com.rorazliev.example.app',
     location: 'default',
   });
 };
@@ -12,3 +12,7 @@ export const connect = async () => {
 export const disconnect = async () => {
   await globalThis.database.close();
 };
+
+export const migrate = async () => {};
+
+export const generate = async () => {};

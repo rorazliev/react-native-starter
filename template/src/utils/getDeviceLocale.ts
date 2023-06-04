@@ -1,6 +1,7 @@
 import { Platform, NativeModules } from 'react-native';
+import type { Locale } from '@app/types';
 
-const getLocale = (): string => {
+export const getDeviceLocale = (): Locale => {
   let locale =
     Platform.OS === 'ios'
       ? NativeModules.SettingsManager.settings.AppleLocale ||
@@ -9,11 +10,9 @@ const getLocale = (): string => {
 
   locale = locale.split('_')[0];
 
-  if (['en'].includes(locale)) {
+  if (['en', 'ru'].includes(locale)) {
     return locale;
   }
 
   return 'en';
 };
-
-export default getLocale;

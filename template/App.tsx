@@ -1,14 +1,23 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { type FunctionComponent, useEffect } from 'react';
 import { StatusBar } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as StoreProvider } from 'react-redux';
-import { ThemeProvider } from 'styled-components/native';
+import styled, { ThemeProvider } from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
-import RootNavigator from '@navigation/RootNavigator';
-import { defaultTheme, darkTheme } from '@identity/themes';
-import { init } from '@redux/slices/appSlice';
-import { useDispatch, useSelector } from '@redux/hooks';
-import { Dispatch, store } from '@redux/store';
+import { defaultTheme, darkTheme } from '@app/identity/themes';
+import { init } from '@app/redux/slices/appSlice';
+import {
+  type Dispatch,
+  store,
+  useDispatch,
+  useSelector,
+} from '@app/redux/store';
+import Navigation from '@app/navigation';
+
+const GestureHandlerProvider = styled(GestureHandlerRootView)`
+  flex: 1;
+`;
 
 const App: FunctionComponent = () => {
   const { theme, status } = useSelector((state) => state.app);
@@ -28,17 +37,19 @@ const App: FunctionComponent = () => {
   }
 
   return (
-    <ThemeProvider theme={theme === 'light' ? defaultTheme : darkTheme}>
-      <SafeAreaProvider>
-        <NavigationContainer
-          theme={theme === 'light' ? defaultTheme : darkTheme}>
-          <StatusBar
-            barStyle={theme === 'light' ? 'dark-content' : 'light-content'}
-          />
-          <RootNavigator />
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </ThemeProvider>
+    <GestureHandlerProvider>
+      <ThemeProvider theme={theme === 'light' ? defaultTheme : darkTheme}>
+        <SafeAreaProvider>
+          <NavigationContainer
+            theme={theme === 'light' ? defaultTheme : darkTheme}>
+            <StatusBar
+              barStyle={theme === 'light' ? 'dark-content' : 'light-content'}
+            />
+            <Navigation />
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </GestureHandlerProvider>
   );
 };
 

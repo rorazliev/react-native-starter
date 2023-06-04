@@ -1,5 +1,14 @@
-import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
-import { appReducer } from '@redux/slices/appSlice';
+import {
+  type TypedUseSelectorHook,
+  useDispatch as useDefaultDispatch,
+  useSelector as useDefaultSelector,
+} from 'react-redux';
+import {
+  type Action,
+  type ThunkAction,
+  configureStore,
+} from '@reduxjs/toolkit';
+import appReducer from '@app/redux/slices/appSlice';
 
 export const store = configureStore({
   reducer: {
@@ -15,3 +24,6 @@ export type Thunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
+
+export const useDispatch = () => useDefaultDispatch<Dispatch>();
+export const useSelector: TypedUseSelectorHook<RootState> = useDefaultSelector;
