@@ -20,7 +20,7 @@ const GestureHandlerProvider = styled(GestureHandlerRootView)`
 `;
 
 const App: FunctionComponent = () => {
-  const { theme, status } = useSelector((state) => state.app);
+  const { launchedBefore, status, theme } = useSelector((state) => state.app);
   const dispatch: Dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const App: FunctionComponent = () => {
             <StatusBar
               barStyle={theme === 'light' ? 'dark-content' : 'light-content'}
             />
-            <Navigation />
+            <Navigation initialRouteName={launchedBefore ? 'Home' : 'Home'} />
           </NavigationContainer>
         </SafeAreaProvider>
       </ThemeProvider>
