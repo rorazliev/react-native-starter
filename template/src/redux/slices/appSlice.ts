@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
-import type { Dispatch } from '@app/redux/store';
+import { type Dispatch } from '@app/redux/store';
 import { getDeviceLocale, getDeviceTheme } from '@app/utils';
 import * as database from '@app/database';
 import type { Locale, Status, Theme } from '@app/types';
@@ -71,19 +71,15 @@ export const init = () => async (dispatch: Dispatch) => {
     }
 
     const launchedBefore = await AsyncStorage.getItem('LAUNCHED_BEFORE');
-    if (!launchedBefore) {
-      dispatch(setLaunchedBefore(false));
-    } else {
-      dispatch(setLaunchedBefore(true));
-    }
+    dispatch(setLaunchedBefore(launchedBefore !== null ? true : false));
 
     await database.connect();
 
-    const initialized = await AsyncStorage.getItem('DATABASE_INITIAZLIED');
+    const initialized = await AsyncStorage.getItem('DATABASE_INITIALAZED');
     if (!initialized) {
       await database.migrate();
       await database.generate();
-      await AsyncStorage.setItem('DATABASE_INITIAZLIED', '1');
+      await AsyncStorage.setItem('DATABASE_INITIALAZED', '1');
     }
 
     dispatch(setStatus('ready'));
@@ -115,4 +111,7 @@ export const updateTheme =
     }
   };
 
-export default appSlice.reducer;
+export const appReducer = appSlice.reducer;
+
+
+

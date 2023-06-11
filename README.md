@@ -4,69 +4,59 @@
 
 A starting point for React Native apps.
 
-## Table of Contents
+## Requirements
 
-- [Requirements](#requirements)
-- [Get Started](#get-started)
-- [Features](#features)
-  - [Architecture](#architecture)
-  - [Redux](#redux)
-  - [SQLite and AsyncStorage](#sqlite-and-asyncstorage)
-  - Styled Components
-  - TypeScript
-- [License](#license)
+Make sure you have the Android and iOS development environment set up; double check the [following guide](https://reactnative.dev/docs/next/environment-setup).
 
-### Get Started
+Also make sure that you have Node 16 or newer installed on your machine.
 
-Use the following command to create a new React Native app:
+>> **Important**: the template was designed on MacBook with M1 chip. I hope everything will work fine on Intel machines. Let me know, please.
+
+## Get Started
+
+Run the following command to create a new React Native app based on this template:
+
+> Don't forget to replace `ProjectName` with a desired name.
 
 ```sh
-npx react-native init SomeApp --template https://github.com/rorazliev/react-native-starter.git
+npx react-native init ProjectName --template https://github.com/rorazliev/react-native-starter.git
 ```
 
-> Don't forget to replace `SomeApp` with a name of your app.
+> **Important**: If you have `yarn` installed globally, you won't be able to use this or any other custom template as `yarn` now requires names to be used instead of URL paths. Use `npm` instead.
 
-`cd` to the project folder and install all dependencies using the following command:
+## Features
 
-```sh
-yarn install && npx pod-install
-```
+The template comes with some cool packages installed and integrated. Some of them are `SQLite` storage, `AsyncStorage`, `reduxjs/toolkit`, `styled-components`, `react-native-gesture-handler`, `react-native-reanimated`, and much more.
 
-> **Important**: Using `npm` for managing dependencies may cause a module resolution error. Use `Yarn` instead.
+See `package.json` for more infomrmation.
 
-### Features
+## Structure
 
-#### Architecture
+The template uses `babel-plugin-module-resolver`. Use `@app/` instead of `./src/` to to simplify and "beautify" imports.
 
-The template uses `babel-plugin-module-resolver` to simplify imports. The following table provides all import shortcuts, paths, and description, as well as a brief overview of the project structure:
+The following table provides a brief overview of the structure:
 
-| Shortcut | Path | Description |
-|----------|------|-------------|
-| `@assets/*` | `./src/assets/*` | contains custom assets like fonts and images |
-| `@components/*` | `./src/components/*` | contains React components |
-| `@identity/*` | `./src/identity/*` | contains identity related primitives and literals |
-| `@mocks/*` | `./src/mocks/*` | contains JSON mock files |
-| `@navigation/*` | `./src/navigation/*` | contains navigators and navigation stacks |
-| `@redux/*` | `./src/redux/*` | contains redux-related files |
-| `@screens/*` | `./src/screens/*` | contains app screens |
-| `@utils/*` | `./src/utils/*` | contains helpers |
+| File or Folder | Description |
+|----------------|-------------|
+| `@app/assets/*` | contains various assets like fonts, images, json files |
+| `@app/components/*` | contains your custom React components |
+| `@app/redux/*` | contains redux-related files |
+| `@app/api.ts` | contains Axios instance and API calls |
+| `@app/constants.ts` | contains global constrants |
+| `@app/database.ts` | contains a database configuration and calls |
+| `@app/navigation.tsx` | contains app navigation |
+| `@app/themes.ts` | contains themes |
+| `@app/types.ts` | contains type definitions |
 
-To add new paths, update the `babel.config.js` and `tsconfig.json` files.
+## Useful Commands
 
-#### Redux
+Run `npx pod-install` to install CocoaPods
 
-The template comes with `Redux` integration, i.e., Redux Toolkit.
+Run `npx react-native-asset` to link custom fonts to your project.
 
-To learn more, read the [official docs](https://redux-toolkit.js.org/).
+## Useful Links
 
-#### SQLite and AsyncStorage
-
-The template comes with `SQLite` version 3 and `AsyncStorage` integration.
-
-To learn more, read the official docs of:
-- [SQLite](https://sqlite.org/docs.html)
-- [SQLite module](https://github.com/andpor/react-native-sqlite-storage)
-- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/)
+If you want to replace an icon set, follow [the official guide](https://www.npmjs.com/package/react-native-vector-icons) of `react-native-vector-icons`.
 
 #### License
 

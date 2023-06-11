@@ -1,11 +1,10 @@
 import React, { type FunctionComponent, useEffect } from 'react';
 import { StatusBar } from 'react-native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as StoreProvider } from 'react-redux';
-import styled, { ThemeProvider } from 'styled-components/native';
+import { ThemeProvider } from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
-import { defaultTheme, darkTheme } from '@app/identity/themes';
+import { GestureHandlerProvider } from '@app/components';
 import { init } from '@app/redux/slices/appSlice';
 import {
   type Dispatch,
@@ -13,11 +12,9 @@ import {
   useDispatch,
   useSelector,
 } from '@app/redux/store';
+import * as database from '@app/database';
 import Navigation from '@app/navigation';
-
-const GestureHandlerProvider = styled(GestureHandlerRootView)`
-  flex: 1;
-`;
+import { darkTheme, defaultTheme } from '@app/themes';
 
 const App: FunctionComponent = () => {
   const { launchedBefore, status, theme } = useSelector((state) => state.app);
@@ -25,6 +22,10 @@ const App: FunctionComponent = () => {
 
   useEffect(() => {
     dispatch(init());
+
+    return () => {
+      database.disconnect();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -1,11 +1,12 @@
 import { enablePromise, openDatabase } from 'react-native-sqlite-storage';
+import { DATABASE_LOCATION, DATABASE_NAME } from '@app/constants';
 
 enablePromise(true);
 
 export const connect = async () => {
   globalThis.database = await openDatabase({
-    name: 'com.rorazliev.example.app',
-    location: 'default',
+    name: DATABASE_NAME,
+    location: DATABASE_LOCATION,
   });
 };
 

@@ -10,7 +10,7 @@ export const getDeviceLocale = (): Locale => {
 
   locale = locale.split('_')[0];
 
-  if (['en', 'ru'].includes(locale)) {
+  if (['en'].includes(locale)) {
     return locale;
   }
 

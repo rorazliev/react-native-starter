@@ -4,7 +4,7 @@ import {
   type NativeStackNavigationProp,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import HomeScreen from '@app/screens/Home';
+import { HomeScreen } from '@app/screens';
 import type { Screen, StackParamList } from '@app/types';
 
 export const useNavigation = () =>
@@ -12,11 +12,11 @@ export const useNavigation = () =>
 
 const Stack = createNativeStackNavigator<StackParamList>();
 
-type PropsType = {
+type Props = {
   initialRouteName?: Screen;
 };
 
-const Navigation: FunctionComponent<PropsType> = ({
+const Navigation: FunctionComponent<Props> = ({
   initialRouteName = 'Home',
 }) => (
   <Stack.Navigator

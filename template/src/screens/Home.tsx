@@ -1,11 +1,11 @@
 import React, { type FunctionComponent } from 'react';
+import { SafeAreaView } from '@app/components';
+import { ScreenProps } from '@app/types';
 
-const HomeScreen: FunctionComponent = () => {
+export const HomeScreen: FunctionComponent<ScreenProps<'Home'>> = () => {
   return (
-    <>
+    <SafeAreaView>
       <></>
-    </>
+    </SafeAreaView>
   );
 };
-
-export default HomeScreen;

@@ -1,17 +1,7 @@
 import type { ColorSchemeName } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-export type Dictionaries = {
-  en: Dictionary;
-};
-
-export type Dictionary = {
-  [key: string]: {
-    [key: string]: string;
-  };
-};
-
-export type Locale = keyof Dictionaries;
+export type Locale = 'en';
 
 export type Screen = keyof StackParamList;
 
